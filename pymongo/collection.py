@@ -3242,7 +3242,7 @@ class Collection(common.BaseObject):
                                       array_filters, hint=hint,
                                       session=session, **kwargs)
 
-    def save(self, to_save, manipulate=True, check_keys=True, **kwargs):
+    def save(self, to_save, manipulate=True, check_keys=False, **kwargs):
         """Save a document in this collection.
 
         **DEPRECATED** - Use :meth:`insert_one` or :meth:`replace_one` instead.
@@ -3271,7 +3271,7 @@ class Collection(common.BaseObject):
             return to_save.get("_id")
 
     def insert(self, doc_or_docs, manipulate=True,
-               check_keys=True, continue_on_error=False, **kwargs):
+               check_keys=False, continue_on_error=False, **kwargs):
         """Insert a document(s) into this collection.
 
         **DEPRECATED** - Use :meth:`insert_one` or :meth:`insert_many` instead.
@@ -3289,7 +3289,7 @@ class Collection(common.BaseObject):
                             check_keys, manipulate, write_concern)
 
     def update(self, spec, document, upsert=False, manipulate=False,
-               multi=False, check_keys=True, **kwargs):
+               multi=False, check_keys=False, **kwargs):
         """Update a document(s) in this collection.
 
         **DEPRECATED** - Use :meth:`replace_one`, :meth:`update_one`, or
